@@ -7,6 +7,7 @@ from notebook.base.handlers import IPythonHandler
 import nbformat
 from traitlets.config import Config
 from hide_code.hide_code_html_exporter import HideCodeHTMLExporter
+from hide_code.hide_code_html_exporter2 import HideCode2HTMLExporter
 from hide_code.hide_code_pdf_exporter import HideCodePDFExporter
 from hide_code.hide_code_latexpdf_exporter import HideCodeLatexPDFExporter
 from hide_code.hide_code_latex_exporter import HideCodeLatexExporter
@@ -27,6 +28,20 @@ class HideCodeHTMLExportHandler(IPythonHandler):
         with open(ipynb_file_name(args), encoding="utf-8") as f:
             nb = nbformat.reads(f.read(), as_version=4)
             exporter = HideCodeHTMLExporter()
+            output_html, resources = exporter.from_notebook_node(nb)
+        self.set_header('Content-Type', 'text/html')
+        self.set_header('Content-Disposition', 'attachment; filename=' + notebook_name(args, 'html'))
+        self.flush()
+        self.write(output_html)
+        self.log.info("hide_code: Finished HTML export for {}".format(args[-1]))
+        self.finish()
+
+class HideCode2HTMLExportHandler(IPythonHandler):
+    def get(self, *args):
+        self.log.info("hide_code: Starting HTML export for {}".format(args[-1]))
+        with open(ipynb_file_name(args), encoding="utf-8") as f:
+            nb = nbformat.reads(f.read(), as_version=4)
+            exporter = HideCode2HTMLExporter()
             output_html, resources = exporter.from_notebook_node(nb)
         self.set_header('Content-Type', 'text/html')
         self.set_header('Content-Disposition', 'attachment; filename=' + notebook_name(args, 'html'))
@@ -126,6 +141,7 @@ def load_jupyter_server_extension(nb_app):
     base_url = web_app.settings['base_url']
     web_app.add_handlers(host_pattern, [
         (route_pattern_for('html'), HideCodeHTMLExportHandler),
+        (route_pattern_for('html2'), HideCode2HTMLExportHandler),
         (route_pattern_for('pdf'), HideCodePDFExportHandler),
         (route_pattern_for('latexpdf'), HideCodeLatexPDFExportHandler),
         (route_pattern_for('latex'), HideCodeLatexExportHandler),
