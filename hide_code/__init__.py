@@ -1,4 +1,5 @@
 from hide_code.hide_code_html_exporter import HideCodeHTMLExporter
+from hide_code.hide_code_html_exporter2 import HideCode2HTMLExporter
 from hide_code.hide_code_pdf_exporter import HideCodePDFExporter
 from hide_code.hide_code_latexpdf_exporter import HideCodeLatexPDFExporter
 from hide_code.hide_code_preprocessor import HideCodePreprocessor
