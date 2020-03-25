@@ -267,12 +267,12 @@ function ($, celltoolbar, Jupyter){
 
 
     function addKeyboardShortcutBindings(){
-    	Jupyter.keyboard_manager.command_shortcuts.add_shortcut('e', 'hide_code:hide_code_action', 'hide_code');
-        Jupyter.keyboard_manager.command_shortcuts.add_shortcut('shift-e', 'hide_code:show_code_action', 'hide_code');
+    	Jupyter.keyboard_manager.command_shortcuts.add_shortcut('c', 'hide_code:hide_code_action', 'hide_code');
+        Jupyter.keyboard_manager.command_shortcuts.add_shortcut('shift-c', 'hide_code:show_code_action', 'hide_code');
         Jupyter.keyboard_manager.command_shortcuts.add_shortcut('w', 'hide_code:hide_prompt_action', 'hide_code');
         Jupyter.keyboard_manager.command_shortcuts.add_shortcut('shift-w', 'hide_code:show_prompt_action', 'hide_code');
-        Jupyter.keyboard_manager.command_shortcuts.add_shortcut('r', 'hide_code:hide_output_action', 'hide_code');
-        Jupyter.keyboard_manager.command_shortcuts.add_shortcut('shift-r', 'hide_code:show_output_action', 'hide_code');
+        Jupyter.keyboard_manager.command_shortcuts.add_shortcut('o', 'hide_code:hide_output_action', 'hide_code');
+        Jupyter.keyboard_manager.command_shortcuts.add_shortcut('shift-o', 'hide_code:show_output_action', 'hide_code');
         Jupyter.keyboard_manager.command_shortcuts.add_shortcut('t', 'hide_code:toggle_prompt_and_code_action', 'hide_code');
     }
 
