@@ -1,11 +1,17 @@
 import os
 import os.path
+import base64
 
 # import traitlets.config import Config
 from traitlets import default, Unicode
 from nbconvert.exporters.html import HTMLExporter
 from traitlets.log import get_logger
 from ipython_genutils.ipstruct import Struct
+
+try:
+    from urllib.request import urlopen  # py3
+except ImportError:
+    from urllib2 import urlopen
 
 class HideCode2HTMLExporter(HTMLExporter):
     def __init__(self, config=None, **kw):
