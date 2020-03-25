@@ -96,7 +96,7 @@ class HideCode2HTMLExporter(HTMLExporter):
 
     @default('template_file')
     def _template_file_default(self):
-        return 'hide_code_full.tpl'
+        return 'hide_code_full_.tpl'
 
     @property
     def template_path(self):
