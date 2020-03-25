@@ -115,7 +115,7 @@ function ($, celltoolbar, Jupyter){
         window.location = exportLink("html");
         Jupyter.notebook.kernel.reconnect();
     }
-    function exportHTML(){
+    function exportHTML_TO_HEADER(){
         window.location = exportLink("htmlx");
         Jupyter.notebook.kernel.reconnect();
     }
