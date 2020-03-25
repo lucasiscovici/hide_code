@@ -115,6 +115,11 @@ function ($, celltoolbar, Jupyter){
         window.location = exportLink("html");
         Jupyter.notebook.kernel.reconnect();
     }
+    function exportHTML(){
+        window.location = exportLink("htmlx");
+        Jupyter.notebook.kernel.reconnect();
+    }
+
 
     function exportPDF(){
         window.location = exportLink("pdf");
@@ -141,6 +146,11 @@ function ($, celltoolbar, Jupyter){
                 'icon': 'fa-file-text-o',
                 'handler': exportHTML
 		    }, 'hide_code:export_html'),
+            Jupyter.actions.register ({
+                'help': 'Export to HTML_TOC_HEADER',
+                'icon': 'fa-file-text-o',
+                'handler': exportHTML_TO_HEADER
+		    }, 'hide_code:export_htmlx'),
 		    Jupyter.actions.register ({
                 'help': 'Export to PDF via HTML',
                 'icon': 'fa-file-pdf-o',
@@ -283,6 +293,7 @@ function ($, celltoolbar, Jupyter){
         getHideCodeMenu().append(dropdownMenuItem('PDF Export (HTML)', exportLink('pdf'), 'HTML PDF exporter.'));
         getHideCodeMenu().append(dropdownMenuItem('PDF Export (Latex)', exportLink('latexpdf'), 'Latex PDF exporter.'));
         getHideCodeMenu().append(dropdownMenuItem('HTML Export', exportLink('html'), 'HTML exporter.'));
+	getHideCodeMenu().append(dropdownMenuItem('HTML_TOC_HEADER Export', exportLink('htmlx'), 'HTML TOC HEADER exporter.'));
         getHideCodeMenu().append(dropdownMenuItem('Latex Export', exportLink('latex'), 'Latex exporter.'));
         getHideCodeMenu().append(dropdownMenuItem('Slides Export', exportLink('slides'), 'Slides exporter.'));
     }
