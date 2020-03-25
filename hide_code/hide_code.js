@@ -11,9 +11,10 @@
 define([
 'jquery',
 'notebook/js/celltoolbar',
-'base/js/namespace'
+'base/js/namespace',
+"base/js/events"
 ], 
-function ($, celltoolbar, Jupyter){
+function ($, celltoolbar, Jupyter, ev){
 	"use strict";
 	const CODE = 1;
 	const PROMPT = 0;
@@ -336,6 +337,20 @@ function ($, celltoolbar, Jupyter){
         	toggleHideCode(cell);
         	toggleHideOutput(cell);
         });
+	
+	ev.on('notebook_loaded.Notebook', function(){
+            
+            var cells = Jupyter.notebook.get_cells();
+            // console.log('cells',cells);\/
+            $.each(cells, function(index, cellp){
+                var cell=cells[index];
+            	toggleHidePrompt(cell);
+            	toggleHideCode(cell);
+            	toggleHideOutput(cell);
+            });
+            console.log('hide_code setup complete');
+        });
+	
         console.log('hide_code setup complete');
 	}
 
