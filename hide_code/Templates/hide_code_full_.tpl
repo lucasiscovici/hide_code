@@ -19,6 +19,7 @@
 <script>
 $( document ).ready(function(){
             var cfg = {{ nb.get('metadata', {}).get('toc', {})|tojson|safe }};
+	    var cd2=  {{ nb.get('notebook').get('collapsible_headings', {}) }};
             cfg.navigate_menu=false;
             // fire the main function with these parameters
             require(['nbextensions/toc2/toc2'], function (toc2) {
@@ -26,7 +27,7 @@ $( document ).ready(function(){
             });
 	    
 	    require(['nbextensions/collapsible_headings/main'], function (ch) {
-		ch.set_collapsible_headings_options(%s);
+		ch.set_collapsible_headings_options(cd2);
 		ch.refresh_all_headings();
 	    });
     });
