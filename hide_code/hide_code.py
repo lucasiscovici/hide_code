@@ -141,7 +141,7 @@ def load_jupyter_server_extension(nb_app):
     base_url = web_app.settings['base_url']
     web_app.add_handlers(host_pattern, [
         (route_pattern_for('html'), HideCodeHTMLExportHandler),
-        (route_pattern_for('html2'), HideCode2HTMLExportHandler),
+        (route_pattern_for('htmlx'), HideCode2HTMLExportHandler),
         (route_pattern_for('pdf'), HideCodePDFExportHandler),
         (route_pattern_for('latexpdf'), HideCodeLatexPDFExportHandler),
         (route_pattern_for('latex'), HideCodeLatexExportHandler),
