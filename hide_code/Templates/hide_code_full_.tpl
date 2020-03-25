@@ -19,7 +19,7 @@
 <script>
 $( document ).ready(function(){
             var cfg = {{ nb.get('metadata', {}).get('toc', {})|tojson|safe }};
-	    var cd2=  {{ nb.get('notebook').get('collapsible_headings', {}) }};
+	    var cd2=  {{ nb.get('metadata',{}).get('collapsible_headings', {}) }};
             cfg.navigate_menu=false;
             // fire the main function with these parameters
             require(['nbextensions/toc2/toc2'], function (toc2) {
