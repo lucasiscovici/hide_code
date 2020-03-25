@@ -8,9 +8,13 @@
 
 <link rel="stylesheet" type="text/css" href="https://min.gitcdn.xyz/cdn/ipython-contrib/jupyter_contrib_nbextensions/master/src/jupyter_contrib_nbextensions/nbextensions/toc2/main.css">
 
+<link rel="stylesheet" type="text/css" href="https://min.gitcdn.xyz/cdn/ipython-contrib/jupyter_contrib_nbextensions/master/src/jupyter_contrib_nbextensions/nbextensions/collapsible_headings/main.css">
+
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <script src="https://min.gitcdn.xyz/cdn/ipython-contrib/jupyter_contrib_nbextensions/master/src/jupyter_contrib_nbextensions/nbextensions/toc2/toc2.js"></script>
+
+<script src="https://min.gitcdn.xyz/cdn/ipython-contrib/jupyter_contrib_nbextensions/master/src/jupyter_contrib_nbextensions/nbextensions/collapsible_headings/main.js"></script>
 
 <script>
 $( document ).ready(function(){
@@ -20,6 +24,11 @@ $( document ).ready(function(){
             require(['nbextensions/toc2/toc2'], function (toc2) {
                 toc2.table_of_contents(cfg);
             });
+	    
+	    require(['nbextensions/collapsible_headings/main'], function (ch) {
+		ch.set_collapsible_headings_options(%s);
+		ch.refresh_all_headings();
+	    });
     });
 </script>
 {%- endblock header -%}
