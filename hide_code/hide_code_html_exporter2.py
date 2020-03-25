@@ -5,7 +5,7 @@ import os.path
 from traitlets import default, Unicode
 from nbconvert.exporters.html import HTMLExporter
 from traitlets.log import get_logger
-
+from ipython_genutils.ipstruct import Struct
 
 class HideCode2HTMLExporter(HTMLExporter):
     def __init__(self, config=None, **kw):
