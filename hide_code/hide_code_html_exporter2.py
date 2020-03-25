@@ -19,7 +19,7 @@ class HideCode2HTMLExporter(HTMLExporter):
         super(HideCode2HTMLExporter, self).__init__(config, **kw)
         # self.preprocessors = ['hide_code.HideCodePreprocessor']
         # self._init_preprocessors()
-         self.inliner_resources['css'].append("""
+        self.inliner_resources['css'].append("""
 /* no local copies of fontawesome fonts in basic templates, so use cdn */
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css)
 """)  # noqa: E501
