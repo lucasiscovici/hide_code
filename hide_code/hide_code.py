@@ -38,11 +38,12 @@ class HideCodeHTMLExportHandler(IPythonHandler):
 
 class HideCode2HTMLExportHandler(IPythonHandler):
     def get(self, *args):
+        global notebook_dir
         self.log.info("hide_code: Starting HTML export for {}".format(args[-1]))
         with open(ipynb_file_name(args), encoding="utf-8") as f:
             nb = nbformat.reads(f.read(), as_version=4)
             exporter = HideCode2HTMLExporter()
-            output_html, resources = exporter.from_notebook_node(nb)
+            output_html, resources = exporter.from_notebook_node(nb,path=notebook_dir[-1])
         self.set_header('Content-Type', 'text/html')
         self.set_header('Content-Disposition', 'attachment; filename=' + notebook_name(args, 'html'))
         self.flush()
