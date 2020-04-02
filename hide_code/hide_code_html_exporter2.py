@@ -33,6 +33,7 @@ class HideCode2HTMLExporter(HTMLExporter):
             HideCode2HTMLExporter, self).from_notebook_node(nb, resources)
 
         self.path = resources['metadata']['path']
+        if self.path is None or self.path == "": self.path=kw.get("path","")
 
         # Get attachments
         self.attachments = Struct()
